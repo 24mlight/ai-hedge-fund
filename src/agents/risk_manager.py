@@ -9,6 +9,8 @@ import json
 import ast
 
 ##### Risk Management Agent #####
+
+
 def risk_management_agent(state: AgentState):
     """Evaluates portfolio risk and sets position limits based on comprehensive risk analysis."""
     show_reasoning = state["metadata"]["show_reasoning"]
@@ -18,10 +20,14 @@ def risk_management_agent(state: AgentState):
     prices_df = prices_to_df(data["prices"])
 
     # Fetch messages from other agents
-    technical_message = next(msg for msg in state["messages"] if msg.name == "technical_analyst_agent")
-    fundamentals_message = next(msg for msg in state["messages"] if msg.name == "fundamentals_agent")
-    sentiment_message = next(msg for msg in state["messages"] if msg.name == "sentiment_agent")
-    valuation_message = next(msg for msg in state["messages"] if msg.name == "valuation_agent")
+    technical_message = next(
+        msg for msg in state["messages"] if msg.name == "technical_analyst_agent")
+    fundamentals_message = next(
+        msg for msg in state["messages"] if msg.name == "fundamentals_agent")
+    sentiment_message = next(
+        msg for msg in state["messages"] if msg.name == "sentiment_agent")
+    valuation_message = next(
+        msg for msg in state["messages"] if msg.name == "valuation_agent")
     try:
         fundamental_signals = json.loads(fundamentals_message.content)
         technical_signals = json.loads(technical_message.content)
@@ -32,7 +38,7 @@ def risk_management_agent(state: AgentState):
         technical_signals = ast.literal_eval(technical_message.content)
         sentiment_signals = ast.literal_eval(sentiment_message.content)
         valuation_signals = ast.literal_eval(valuation_message.content)
-        
+
     agent_signals = {
         "fundamental": fundamental_signals,
         "technical": technical_signals,
@@ -43,8 +49,10 @@ def risk_management_agent(state: AgentState):
     # 1. Calculate Risk Metrics
     returns = prices_df['close'].pct_change().dropna()
     daily_vol = returns.std()
-    volatility = daily_vol * (252 ** 0.5)  # Annualized volatility approximation
-    var_95 = returns.quantile(0.05)         # Simple historical VaR at 95% confidence
+    # Annualized volatility approximation
+    volatility = daily_vol * (252 ** 0.5)
+    # Simple historical VaR at 95% confidence
+    var_95 = returns.quantile(0.05)
     max_drawdown = (prices_df['close'] / prices_df['close'].cummax() - 1).min()
 
     # 2. Market Risk Assessment
@@ -74,8 +82,9 @@ def risk_management_agent(state: AgentState):
     current_stock_value = portfolio['stock'] * prices_df['close'].iloc[-1]
     total_portfolio_value = portfolio['cash'] + current_stock_value
 
-    base_position_size = total_portfolio_value * 0.25  # Start with 25% max position of total portfolio
-    
+    # Start with 25% max position of total portfolio
+    base_position_size = total_portfolio_value * 0.25
+
     if market_risk_score >= 4:
         # Reduce position for high risk
         max_position_size = base_position_size * 0.5
@@ -98,7 +107,8 @@ def risk_management_agent(state: AgentState):
 
     for scenario, decline in stress_test_scenarios.items():
         potential_loss = current_position_value * decline
-        portfolio_impact = potential_loss / (portfolio['cash'] + current_position_value) if (portfolio['cash'] + current_position_value) != 0 else math.nan
+        portfolio_impact = potential_loss / (portfolio['cash'] + current_position_value) if (
+            portfolio['cash'] + current_position_value) != 0 else math.nan
         stress_test_results[scenario] = {
             "potential_loss": potential_loss,
             "portfolio_impact": portfolio_impact
@@ -108,14 +118,16 @@ def risk_management_agent(state: AgentState):
     # Convert all confidences to numeric for proper comparison
     def parse_confidence(conf_str):
         return float(conf_str.replace('%', '')) / 100.0
-    low_confidence = any(parse_confidence(signal['confidence']) < 0.30 for signal in agent_signals.values())
+    low_confidence = any(parse_confidence(
+        signal['confidence']) < 0.30 for signal in agent_signals.values())
 
     # Check the diversity of signals. If all three differ, add to risk score
     # (signal divergence can be seen as increased uncertainty)
     unique_signals = set(signal['signal'] for signal in agent_signals.values())
     signal_divergence = (2 if len(unique_signals) == 3 else 0)
 
-    risk_score = (market_risk_score * 2)  # Market risk contributes up to ~6 points total when doubled
+    # Market risk contributes up to ~6 points total when doubled
+    risk_score = (market_risk_score * 2)
     if low_confidence:
         risk_score += 4  # Add penalty if any signal confidence < 30%
     risk_score += signal_divergence
@@ -159,4 +171,3 @@ def risk_management_agent(state: AgentState):
         show_agent_reasoning(message_content, "Risk Management Agent")
 
     return {"messages": state["messages"] + [message]}
-

@@ -1,0 +1,188 @@
+{
+  "AAPL": [
+    {
+      "transaction_shares": -15753,
+      "transaction_type": "SELL",
+      "value": -1463138.64,
+      "date": "2025-01-03"
+    },
+    {
+      "transaction_shares": -49606,
+      "transaction_type": "SELL",
+      "value": -4756719.34,
+      "date": "2024-12-29"
+    },
+    {
+      "transaction_shares": -6843,
+      "transaction_type": "SELL",
+      "value": -695796.24,
+      "date": "2024-12-29"
+    },
+    {
+      "transaction_shares": 6249,
+      "transaction_type": "BUY",
+      "value": 738944.25,
+      "date": "2024-12-25"
+    },
+    {
+      "transaction_shares": -6235,
+      "transaction_type": "SELL",
+      "value": -605667.9,
+      "date": "2024-12-25"
+    },
+    {
+      "transaction_shares": 19475,
+      "transaction_type": "BUY",
+      "value": 2220539.5,
+      "date": "2024-12-22"
+    },
+    {
+      "transaction_shares": -30736,
+      "transaction_type": "SELL",
+      "value": -3127695.36,
+      "date": "2024-12-18"
+    },
+    {
+      "transaction_shares": 41472,
+      "transaction_type": "BUY",
+      "value": 4785454.08,
+      "date": "2024-12-13"
+    },
+    {
+      "transaction_shares": -8354,
+      "transaction_type": "SELL",
+      "value": -954026.8,
+      "date": "2024-12-10"
+    },
+    {
+      "transaction_shares": 20460,
+      "transaction_type": "BUY",
+      "value": 1724164.2,
+      "date": "2024-12-07"
+    }
+  ],
+  "MSFT": [
+    {
+      "transaction_shares": -45162,
+      "transaction_type": "SELL",
+      "value": -4547361.78,
+      "date": "2024-12-29"
+    },
+    {
+      "transaction_shares": -49517,
+      "transaction_type": "SELL",
+      "value": -4828402.67,
+      "date": "2024-12-25"
+    },
+    {
+      "transaction_shares": 22554,
+      "transaction_type": "BUY",
+      "value": 2424780.54,
+      "date": "2024-12-23"
+    },
+    {
+      "transaction_shares": -22560,
+      "transaction_type": "SELL",
+      "value": -2645611.2,
+      "date": "2024-12-22"
+    },
+    {
+      "transaction_shares": 10959,
+      "transaction_type": "BUY",
+      "value": 1297545.6,
+      "date": "2024-12-20"
+    },
+    {
+      "transaction_shares": 30582,
+      "transaction_type": "BUY",
+      "value": 2933425.44,
+      "date": "2024-12-11"
+    },
+    {
+      "transaction_shares": -36076,
+      "transaction_type": "SELL",
+      "value": -3975575.2,
+      "date": "2024-12-11"
+    },
+    {
+      "transaction_shares": -6144,
+      "transaction_type": "SELL",
+      "value": -586813.44,
+      "date": "2024-12-08"
+    },
+    {
+      "transaction_shares": -48851,
+      "transaction_type": "SELL",
+      "value": -4457653.75,
+      "date": "2024-12-07"
+    },
+    {
+      "transaction_shares": 8971,
+      "transaction_type": "BUY",
+      "value": 771236.87,
+      "date": "2024-12-05"
+    }
+  ],
+  "GOOGL": [
+    {
+      "transaction_shares": -49180,
+      "transaction_type": "SELL",
+      "value": -5521438.6,
+      "date": "2024-12-29"
+    },
+    {
+      "transaction_shares": -11601,
+      "transaction_type": "SELL",
+      "value": -1096642.53,
+      "date": "2024-12-27"
+    },
+    {
+      "transaction_shares": 24464,
+      "transaction_type": "BUY",
+      "value": 2118093.12,
+      "date": "2024-12-26"
+    },
+    {
+      "transaction_shares": 17932,
+      "transaction_type": "BUY",
+      "value": 1462533.92,
+      "date": "2024-12-26"
+    },
+    {
+      "transaction_shares": -2697,
+      "transaction_type": "SELL",
+      "value": -283427.73,
+      "date": "2024-12-25"
+    },
+    {
+      "transaction_shares": -42402,
+      "transaction_type": "SELL",
+      "value": -4295322.6,
+      "date": "2024-12-20"
+    },
+    {
+      "transaction_shares": 21263,
+      "transaction_type": "BUY",
+      "value": 2370399.24,
+      "date": "2024-12-20"
+    },
+    {
+      "transaction_shares": -18017,
+      "transaction_type": "SELL",
+      "value": -1671256.92,
+      "date": "2024-12-20"
+    },
+    {
+      "transaction_shares": 43128,
+      "transaction_type": "BUY",
+      "value": 4188160.08,
+      "date": "2024-12-19"
+    },
+    {
+      "transaction_shares": 9394,
+      "transaction_type": "BUY",
+      "value": 820753.78,
+      "date": "2024-12-15"
+    }
+  ]
+}
